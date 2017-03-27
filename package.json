@@ -1,12 +1,17 @@
 {
   "name": "postcss-for-var-in",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Loops through vars in a file and expose them trough key value params",
   "main": "index.js",
   "scripts": {
     "test": "postcss-tape"
   },
-  "author": "",
+  "repository" :
+  {
+    "type" : "git",
+     "url" : "https://github.com/glennlegend/postcss-for-var-in"
+  },
+  "author": "Daniel Grøtting<glennlegend@gmail.com>",
   "license": "UNLICENSED",
   "dependencies": {
     "postcss": "^5.2.16",
