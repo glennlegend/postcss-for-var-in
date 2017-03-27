@@ -1,0 +1,5 @@
+@forVar $name in @import 'vars.css' {
+  .background-$(name) {
+    background-color: $value
+  }
+}

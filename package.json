@@ -1,0 +1,19 @@
+{
+  "name": "postcss-for-var-in",
+  "version": "0.0.1",
+  "description": "Loops through vars in a file and expose them trough key value params",
+  "main": "index.js",
+  "scripts": {
+    "test": "postcss-tape"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "postcss": "^5.2.16",
+    "postcss-import": "^9.1.0",
+    "postcss-simple-vars": "^3.1.0"
+  },
+  "devDependencies": {
+    "postcss-tape": "^1.3.1"
+  }
+}

@@ -1,0 +1,5 @@
+@forVar $name, $value in @imfort 'vars.css' {
+  .background-$(name) {
+    background-color: $value
+  }
+}

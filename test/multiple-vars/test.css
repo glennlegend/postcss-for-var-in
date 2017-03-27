@@ -1,0 +1,5 @@
+@forVar $name, $value in @import 'vars.css' {
+  .margin-$(name) {
+    margin: $value;
+  }
+}
