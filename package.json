@@ -1,6 +1,6 @@
 {
   "name": "postcss-for-var-in",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Loops through vars in a file and expose them trough key value params",
   "main": "index.js",
   "scripts": {
