@@ -1,22 +1,21 @@
-var postcss = require('postcss');
-var atImport = require('postcss-import');
-var makeVars = require('postcss-simple-vars');
-var path = require('path');
-var fs = require('fs');
+const postcss = require('postcss');
+const atImport = require('postcss-import');
+const makeVars = require('postcss-simple-vars');
+const path = require('path');
+const fs = require('fs');
 
 const promises = [];
 
 function getParts(params, rule) {
   const match = params.match(/\$(\w+),? \$(\w+) in (@import.*)$/);
   if(match && match.length === 4) {
-    const keyName = match[1];
-    const valueName = match[2];
+    const [, keyName, valueName, importRule] = match;
     return {
       values: {
         keyName,
         valueName,
       },
-      importRule: match[3]
+      importRule
     };
   } else {
     throw rule.error('Malformed forVar statement. Should be: @forVar $name, $value in @import \'name-of-css-file.css\'');
@@ -45,10 +44,17 @@ module.exports = postcss.plugin('postcss-for-var-in', (opts = {}) => {
               .process(importRule)
               .then(res => {
                 res.root.nodes[0].nodes.map(decl => {
-                  var content = rule.clone();
-                  var { prop: name, value } = decl;
-                  name = name.replace('--', '');
-                  const vars = { [values.keyName]: name, [values.valueName]: value };
+                  const content = rule.clone();
+
+                  const { prop: variableName } = decl;
+                  const name = variableName.replace('--', '');
+                  const value = `var(${variableName})`;
+
+                  const vars = {
+                    [values.keyName]: name,
+                    [values.valueName]: value
+                  };
+
                   makeVars({ only: vars })(content);
                   rule.parent.insertBefore(rule, content.nodes);
                 });
