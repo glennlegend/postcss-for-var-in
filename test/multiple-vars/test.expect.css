@@ -1,12 +1,12 @@
 .margin-space-1 {
-    margin: 2px
+    margin: var(--space-1)
 }
 .margin-space-2 {
-    margin: 4px
+    margin: var(--space-2)
 }
 .margin-space-3 {
-    margin: 6px
+    margin: var(--space-3)
 }
 .margin-space-4 {
-    margin: 8px
+    margin: var(--space-4)
 }
